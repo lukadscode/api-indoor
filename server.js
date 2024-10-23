@@ -17,7 +17,7 @@ const coachRoutes = require("./routes/coach.routes");
 const encryptRoutes = require("./routes/encrypt.routes");
 
 // Importer les associations
-const { Category, Subcategory } = require("./models/associations");
+const { Category, Subcategory } = require("./associations"); // Importer associations.js ici
 
 // Charger les variables d'environnement
 dotenv.config();
@@ -42,10 +42,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/coaches", coachRoutes);
 app.use("/api", encryptRoutes);
-
-app.get("/set-password", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "set-password.html"));
-});
 
 // Connexion à la base de données et synchronisation des modèles
 sequelize
