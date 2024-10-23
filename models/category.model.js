@@ -1,3 +1,6 @@
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
+
 /**
  * @swagger
  * components:
@@ -20,9 +23,6 @@
  *           description: The hexadecimal color code for the category
  *           example: #FF5733
  */
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-
 const Category = sequelize.define(
   "Category",
   {
@@ -36,13 +36,13 @@ const Category = sequelize.define(
       allowNull: false,
     },
     color: {
-      type: DataTypes.STRING(7), // Code couleur hexadécimal
+      type: DataTypes.STRING(7),
       allowNull: false,
     },
   },
   {
     tableName: "categories",
-    timestamps: false, // Pas de colonnes createdAt et updatedAt
+    timestamps: false,
   }
 );
 

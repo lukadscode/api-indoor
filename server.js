@@ -2,22 +2,22 @@ const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-const crypto = require("crypto");
+const sequelize = require("./config/db");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerOptions = require("./swagger/swaggerOptions");
 const categoryRoutes = require("./routes/category.routes");
 const subcategoryRoutes = require("./routes/subcategory.routes");
 const tutorialRoutes = require("./routes/tutorial.routes");
 const videoRoutes = require("./routes/video.routes");
 const userRoutes = require("./routes/user.routes");
-const authRoutes = require("./routes/auth.routes"); // <-- Importer les routes d'authentification
+const authRoutes = require("./routes/auth.routes");
 const newsRoutes = require("./routes/news.routes");
 const coachRoutes = require("./routes/coach.routes");
 const encryptRoutes = require("./routes/encrypt.routes");
-const sequelize = require("./config/db");
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger/swagger.json");
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerOptions = require("./swagger/swaggerOptions");
-const { Category, Subcategory } = require("./models/associations");
+
+// Importer les associations
+const { Category, Subcategory } = require("./associations");
 
 // Charger les variables d'environnement
 dotenv.config();
@@ -32,7 +32,7 @@ app.use(express.json());
 const specs = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
-// Routes pour Category, Subcategory, Tutorial, Video, User, et Auth
+// Routes
 app.use("/api/categories", categoryRoutes);
 app.use("/api/subcategories", subcategoryRoutes);
 app.use("/api/tutorials", tutorialRoutes);
@@ -47,11 +47,15 @@ app.get("/set-password", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "set-password.html"));
 });
 
-// Connexion à la base de données
+// Connexion à la base de données et synchronisation des modèles
 sequelize
   .authenticate()
   .then(() => {
     console.log("Connection to the database successful");
+    return sequelize.sync();
+  })
+  .then(() => {
+    console.log("Database synchronized");
   })
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
