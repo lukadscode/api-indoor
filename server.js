@@ -5,7 +5,6 @@ const helmet = require("helmet");
 const sequelize = require("./config/db");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerOptions = require("./swagger/swaggerOptions");
 const categoryRoutes = require("./routes/category.routes");
 const subcategoryRoutes = require("./routes/subcategory.routes");
 const tutorialRoutes = require("./routes/tutorial.routes");
@@ -13,7 +12,10 @@ const videoRoutes = require("./routes/video.routes");
 const userRoutes = require("./routes/user.routes");
 const authRoutes = require("./routes/auth.routes");
 
-// Charger les modèles et leurs associations
+console.log("Swagger options loaded");
+const swaggerOptions = require("./swagger/swaggerOptions");
+
+console.log("Associations loaded");
 require("./models/associations");
 
 dotenv.config();
