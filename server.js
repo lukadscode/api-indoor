@@ -29,7 +29,7 @@ app.use(express.json());
 const specs = swaggerJsdoc(swaggerOptions);
 
 app.get("/", (req, res) => {
-  res.send("Helmet is working!");
+  res.send("API FFAVIRON ");
 });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
