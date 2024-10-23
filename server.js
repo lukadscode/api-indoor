@@ -33,6 +33,7 @@ app.use(
         "'self'",
         "https://code.jquery.com",
         "https://cdn.jsdelivr.net",
+        "https://stackpath.bootstrapcdn.com",
       ],
       objectSrc: ["'none'"],
       baseUri: ["'self'"],
