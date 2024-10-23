@@ -51,19 +51,19 @@ router.get("/", VideoController.getAllVideos);
  * @swagger
  * /videos/bySubcategoryOrCategory:
  *   get:
- *     summary: Retrieve videos by subcategory or category
+ *     summary: Get videos by subcategory or category
  *     tags: [Videos]
- *     security:
- *       - BearerAuth: []
  *     responses:
  *       200:
- *         description: List of videos by subcategory or category
+ *         description: List of videos
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Video'
+ *       500:
+ *         description: Server error
  */
 router.get(
   "/bySubcategoryOrCategory",

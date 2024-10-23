@@ -1,16 +1,34 @@
 const Subcategory = require("../models/subcategory.model");
+const Video = require("../models/video.model");
+const Category = require("../models/category.model");
 
-// Service pour obtenir toutes les sous-catégories
+// Service pour obtenir toutes les sous-catégories avec leurs vidéos et catégories associées
 exports.getAllSubcategories = async () => {
   return await Subcategory.findAll({
-    include: "Category", // Inclure les informations sur la catégorie associée
+    include: [
+      {
+        model: Video,
+        as: "subcategoryVideos", // Utilisation de l'alias ici
+      },
+      {
+        model: Category, // Inclure aussi la catégorie associée
+      },
+    ],
   });
 };
 
-// Service pour obtenir une sous-catégorie par ID
+// Service pour obtenir une sous-catégorie par ID avec ses vidéos et sa catégorie
 exports.getSubcategoryById = async (id) => {
   return await Subcategory.findByPk(id, {
-    include: "Category",
+    include: [
+      {
+        model: Video,
+        as: "subcategoryVideos", // Utilisation de l'alias ici
+      },
+      {
+        model: Category, // Inclure aussi la catégorie associée
+      },
+    ],
   });
 };
 

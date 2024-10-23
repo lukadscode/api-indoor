@@ -47,11 +47,11 @@ exports.getVideosBySubcategoryOrCategory = async () => {
       include: [
         {
           model: Subcategory,
-          as: "subcategories",
+          as: "subcategories", // Utilisation de l'alias correct pour les sous-catégories
           include: [
             {
               model: Video,
-              as: "subcategoryVideos", // Spécifier l'alias pour les vidéos associées aux sous-catégories
+              as: "subcategoryVideos", // Alias pour les vidéos associées aux sous-catégories
               include: [
                 {
                   model: Tutorial,
@@ -62,7 +62,7 @@ exports.getVideosBySubcategoryOrCategory = async () => {
           ],
         },
         {
-          model: Video, // Vidéos directement associées à la catégorie (si la catégorie n'a pas de sous-catégories)
+          model: Video, // Vidéos directement associées à la catégorie
           as: "categoryVideos", // Alias pour les vidéos associées aux catégories
           include: [
             {
@@ -89,14 +89,14 @@ exports.getVideosBySubcategoryOrCategory = async () => {
                 id: video.id.toString(),
                 title: video.title,
                 videoUrl: video.video_url, // Adaptation pour `video_url`
-                downloadUrl: video.download_url, // Adaptation pour `video_url`
+                downloadUrl: video.download_url, // Adaptation pour `download_url`
                 pdfUrl: video.pdf_url || null, // Adaptation pour `pdf_url`
                 tutorial: video.tutorial
                   ? {
                       id: video.tutorial.id.toString(),
                       title: video.tutorial.title,
-                      videoUrl: video.tutorial.video_url, // Adaptation pour `video_url`*
-                      downloadUrl: video.tutorial.download_url, // Adaptation pour `video_url`
+                      videoUrl: video.tutorial.video_url, // Adaptation pour `video_url`
+                      downloadUrl: video.tutorial.download_url, // Adaptation pour `download_url`
                       pdfUrl: video.tutorial.pdf_url || null, // Adaptation pour `pdf_url`
                     }
                   : null,
@@ -110,14 +110,14 @@ exports.getVideosBySubcategoryOrCategory = async () => {
                   id: video.id.toString(),
                   title: video.title,
                   videoUrl: video.video_url, // Adaptation pour `video_url`
-                  downloadUrl: video.download_url, // Adaptation pour `video_url`
+                  downloadUrl: video.download_url, // Adaptation pour `download_url`
                   pdfUrl: video.pdf_url || null, // Adaptation pour `pdf_url`
                   tutorial: video.tutorial
                     ? {
                         id: video.tutorial.id.toString(),
                         title: video.tutorial.title,
                         videoUrl: video.tutorial.video_url, // Adaptation pour `video_url`
-                        downloadUrl: video.tutorial.download_url, // Adaptation pour `video_url`
+                        downloadUrl: video.tutorial.download_url, // Adaptation pour `download_url`
                         pdfUrl: video.tutorial.pdf_url || null, // Adaptation pour `pdf_url`
                       }
                     : null,
