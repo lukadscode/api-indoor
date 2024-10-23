@@ -8,7 +8,10 @@ console.log("Loading Tutorial");
 const Tutorial = require("./tutorial.model");
 
 // Associations
-Category.hasMany(Subcategory, { foreignKey: "category_id" });
+Category.hasMany(Subcategory, {
+  foreignKey: "category_id",
+  as: "subcategories",
+});
 Subcategory.belongsTo(Category, { foreignKey: "category_id" });
 
 Category.hasMany(Video, { foreignKey: "category_id" });
