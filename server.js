@@ -17,7 +17,7 @@ const coachRoutes = require("./routes/coach.routes");
 const encryptRoutes = require("./routes/encrypt.routes");
 
 // Importer les associations
-const { Category, Subcategory } = require("./associations"); // Importer associations.js ici
+const { Category, Subcategory } = require("./models/associations"); // Importer associations.js ici
 
 // Charger les variables d'environnement
 dotenv.config();
