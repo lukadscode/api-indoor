@@ -18,9 +18,18 @@ dotenv.config();
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
+app.use(helmet());
+app.use(express.json());
+
+const specs = swaggerJsdoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+app.use("/api/categories", categoryRoutes);
+app.use("/api/subcategories", subcategoryRoutes);
+app.use("/api/tutorials", tutorialRoutes);
+app.use("/api/videos", videoRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
