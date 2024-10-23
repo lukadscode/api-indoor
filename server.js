@@ -31,6 +31,7 @@ app.use(
       defaultSrc: ["'self'"],
       scriptSrc: [
         "'self'",
+        "'unsafe-inline'",
         "https://code.jquery.com",
         "https://cdn.jsdelivr.net",
         "https://stackpath.bootstrapcdn.com",
