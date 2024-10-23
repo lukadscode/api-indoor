@@ -15,6 +15,8 @@ const tutorialRoutes = require("./routes/tutorial.routes");
 const videoRoutes = require("./routes/video.routes");
 const userRoutes = require("./routes/user.routes");
 const authRoutes = require("./routes/auth.routes");
+const coachRoutes = require("./routes/coach.routes");
+const newsRoutes = require("./routes/news.routes");
 
 console.log("Associations loaded");
 require("./models/associations");
@@ -40,6 +42,8 @@ app.use("/api/tutorials", tutorialRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/coaches", coachRoutes);
+app.use("/api/news", newsRoutes);
 
 sequelize
   .authenticate()

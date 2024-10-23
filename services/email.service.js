@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendResetPasswordEmail = async (email, token) => {
-  const resetLink = `https://yourdomain.com/reset-password?token=${token}`; // URL du lien de réinitialisation
+  const resetLink = `https://api.aviron-indoor.fr/reset-password?token=${token}`; // URL du lien de réinitialisation
 
   const mailOptions = {
     from: process.env.EMAIL_USER, // Expéditeur
@@ -37,13 +37,13 @@ exports.sendResetPasswordEmail = async (email, token) => {
 
 // Envoyer un email de bienvenue avec un lien pour définir un mot de passe
 exports.sendWelcomeEmail = async (email, token) => {
-  const setPasswordLink = `https://yourdomain.com/set-password?token=${token}`; // URL du lien pour définir le mot de passe
+  const setPasswordLink = `https://api.aviron-indoor.fr/set-password?token=${token}`; // URL du lien pour définir le mot de passe
 
   const mailOptions = {
     from: process.env.EMAIL_USER, // Expéditeur
     to: email, // Destinataire
     subject: "Bienvenue ! Définissez votre mot de passe",
-    text: `Bonjour,\n\nBienvenue dans notre service. Veuillez cliquer sur le lien suivant pour définir votre mot de passe :\n${setPasswordLink}\n\nCe lien est valable 48 heures.`,
+    text: `Bonjour,\n\nBienvenue sur l'application de la Fédération Française d'Aviron pour les clubs AviFit et RoWning. Veuillez cliquer sur le lien suivant pour définir votre mot de passe :\n${setPasswordLink}\n\nCe lien est valable 48 heures.`,
   };
 
   try {
