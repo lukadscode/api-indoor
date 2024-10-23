@@ -45,6 +45,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/coaches", coachRoutes);
 app.use("/api/news", newsRoutes);
 
+app.get("/set-password", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/set-password.html"));
+});
+
 sequelize
   .authenticate()
   .then(() => {
