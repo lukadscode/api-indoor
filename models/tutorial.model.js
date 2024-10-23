@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
-const Video = require("./video.model");
 
 const Tutorial = sequelize.define(
   "Tutorial",
@@ -32,11 +31,7 @@ const Tutorial = sequelize.define(
     },
     video_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: Video,
-        key: "id",
-      },
-      onDelete: "CASCADE",
+      allowNull: false,
     },
   },
   {
@@ -44,7 +39,5 @@ const Tutorial = sequelize.define(
     timestamps: false,
   }
 );
-
-Tutorial.belongsTo(Video, { foreignKey: "video_id" });
 
 module.exports = Tutorial;

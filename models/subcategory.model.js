@@ -1,33 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-/**
- * @swagger
- * components:
- *   schemas:
- *     Subcategory:
- *       type: object
- *       required:
- *         - name
- *         - color
- *         - category_id
- *       properties:
- *         id:
- *           type: integer
- *           description: The auto-generated ID of the subcategory
- *         name:
- *           type: string
- *           description: The name of the subcategory
- *           example: JavaScript Basics
- *         color:
- *           type: string
- *           description: The hexadecimal color code for the subcategory
- *           example: #3498db
- *         category_id:
- *           type: integer
- *           description: The ID of the parent category
- *           example: 1
- */
 const Subcategory = sequelize.define(
   "Subcategory",
   {
