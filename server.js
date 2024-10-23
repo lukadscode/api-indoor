@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const sequelize = require("./config/db");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerOptions = require("./swagger/swaggerOptions");
 const categoryRoutes = require("./routes/category.routes");
 const subcategoryRoutes = require("./routes/subcategory.routes");
 const tutorialRoutes = require("./routes/tutorial.routes");
