@@ -25,7 +25,21 @@ dotenv.config();
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: [
+        "'self'",
+        "https://code.jquery.com",
+        "https://cdn.jsdelivr.net",
+      ],
+      objectSrc: ["'none'"],
+      baseUri: ["'self'"],
+    },
+  })
+);
+
 app.use(express.json());
 
 const specs = swaggerJsdoc(swaggerOptions);
