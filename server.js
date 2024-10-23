@@ -17,7 +17,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerOptions = require("./swagger/swaggerOptions");
-require("./models/associations");
+const { Category, Subcategory } = require("./models/associations");
 
 // Charger les variables d'environnement
 dotenv.config();

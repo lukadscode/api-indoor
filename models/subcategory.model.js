@@ -27,6 +27,7 @@
  */
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
+const Category = require("./category.model");
 
 const Subcategory = sequelize.define(
   "Subcategory",
