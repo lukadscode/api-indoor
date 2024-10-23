@@ -43,6 +43,11 @@ app.use(helmet());
 app.use(express.json());
 
 const specs = swaggerJsdoc(swaggerOptions);
+
+app.get("/", (req, res) => {
+  res.send("Helmet is working!");
+});
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use("/api/categories", categoryRoutes);
