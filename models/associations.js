@@ -1,7 +1,7 @@
-const Category = require("./models/category.model");
-const Subcategory = require("./models/subcategory.model");
-const Video = require("./models/video.model");
-const Tutorial = require("./models/tutorial.model");
+const Category = require("../models/category.model");
+const Subcategory = require("../models/subcategory.model");
+const Video = require("../models/video.model");
+const Tutorial = require("../models/tutorial.model");
 
 // Association entre Category et Subcategory
 Category.hasMany(Subcategory, {
