@@ -1,24 +1,8 @@
-try {
-  const express = require("express");
-  console.log("Express loaded successfully");
-} catch (error) {
-  console.error("Error loading express:", error);
-}
+const express = require("express");
 
-try {
-  const helmet = require("helmet");
-  console.log("Helmet loaded successfully");
-} catch (error) {
-  console.error("Error loading helmet:", error);
-}
+const helmet = require("helmet");
 
-try {
-  const swaggerOptions = require("./swagger/swaggerOptions");
-  console.log("Swagger options loaded successfully");
-} catch (error) {
-  console.error("Error loading swagger options:", error);
-  console.trace(error); // Ajoute une trace de la pile complète
-}
+const swaggerOptions = require("./swagger/swaggerOptions");
 
 const path = require("path");
 const dotenv = require("dotenv");
@@ -43,6 +27,11 @@ app.use(helmet());
 app.use(express.json());
 
 const specs = swaggerJsdoc(swaggerOptions);
+
+app.get("/", (req, res) => {
+  res.send("Helmet is working!");
+});
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use("/api/categories", categoryRoutes);
