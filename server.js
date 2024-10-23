@@ -13,8 +13,7 @@ const videoRoutes = require("./routes/video.routes");
 const userRoutes = require("./routes/user.routes");
 const authRoutes = require("./routes/auth.routes");
 require("./models/associations");
-
-console.log("Express logs :", express);
+console.log("Express should be defined now:", express);
 
 dotenv.config();
 
