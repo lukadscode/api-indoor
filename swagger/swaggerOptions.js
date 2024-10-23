@@ -8,7 +8,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://api.aviron-indoor.fr/api",
+        url: "https://api.aviron-indoor.fr/api",
       },
     ],
     components: {
