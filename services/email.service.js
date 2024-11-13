@@ -43,7 +43,7 @@ exports.sendWelcomeEmail = async (email, token) => {
     from: process.env.EMAIL_USER, // Expéditeur
     to: email, // Destinataire
     subject: "Bienvenue ! Définissez votre mot de passe",
-    text: `Bonjour,\n\nBienvenue sur l'application de la Fédération Française d'Aviron pour les clubs AviFit et RoWning. Veuillez cliquer sur le lien suivant pour définir votre mot de passe :\n${setPasswordLink}\n\nCe lien est valable 48 heures.`,
+    text: `Bonjour,\n\nBienvenue sur l'application de la Fédération Française d'Aviron pour les clubs AviFit et RoWning. Veuillez cliquer sur le lien suivant pour définir votre mot de passe :\n${setPasswordLink}\n\nCe lien est valable 48 heures.\n\n Vous pouvez retrouver les applications sur Play store (android téléphone et tablette) sous le nom Solution indoor béta et sur Apple store (Iphone et Ipad) sous le nom Solution indoor. \n\n Merci de votre compréhension.`,
   };
 
   try {
