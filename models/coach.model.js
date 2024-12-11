@@ -31,6 +31,14 @@ const Coach = sequelize.define(
     reset_password_token_expires: {
       type: DataTypes.DATE, // Expiration du token
     },
+    access: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "tout",
+      validate: {
+        isIn: [["AviFit", "RoWning", "AviFit/RoWning", "e-row", "tout"]],
+      },
+    },
   },
   {
     tableName: "coach",

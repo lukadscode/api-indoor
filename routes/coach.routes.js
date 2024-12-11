@@ -9,6 +9,11 @@ const router = express.Router();
 const validateCoach = [
   body("idffa").notEmpty().withMessage("ID FFA is required"),
   body("email").isEmail().withMessage("A valid email is required"),
+  body("access")
+    .isIn(["AviFit", "RoWning", "AviFit/RoWning", "e-row", "tout"])
+    .withMessage(
+      "Access must be one of 'AviFit', 'RoWning', 'AviFit/RoWning', 'e-row', or 'tout'"
+    ),
 ];
 
 /**
@@ -168,6 +173,11 @@ router.post("/set-password", async (req, res) => {
  *                 type: string
  *                 description: Adresse e-mail du coach
  *                 example: coach@example.com
+ *                access:
+ *                  type: string
+ *                  description: Niveau d'accès du coach
+ *                  enum: ["AviFit", "RoWning", "AviFit/RoWning", "e-row", "tout"]
+ *                  example: "AviFit"
  *     responses:
  *       201:
  *         description: Coach créé avec succès
