@@ -156,7 +156,7 @@ router.post("/set-password", async (req, res) => {
  * @swagger
  * /coaches:
  *   post:
- *     summary: Créer un nouveau coach
+ *     summary: Create a new coach
  *     tags: [Coaches]
  *     requestBody:
  *       required: true
@@ -168,16 +168,16 @@ router.post("/set-password", async (req, res) => {
  *               idffa:
  *                 type: string
  *                 description: Identifiant FFA du coach
- *                 example: 123456
+ *                 example: "123456"
  *               email:
  *                 type: string
  *                 description: Adresse e-mail du coach
- *                 example: coach@example.com
- *                access:
- *                  type: string
- *                  description: Niveau d'accès du coach
- *                  enum: ["AviFit", "RoWning", "AviFit/RoWning", "e-row", "tout"]
- *                  example: "AviFit"
+ *                 example: "coach@example.com"
+ *               access:
+ *                 type: string
+ *                 description: Niveau d'accès du coach
+ *                 enum: ["AviFit", "RoWning", "AviFit/RoWning", "e-row", "tout"]
+ *                 example: "AviFit"
  *     responses:
  *       201:
  *         description: Coach créé avec succès
@@ -186,38 +186,22 @@ router.post("/set-password", async (req, res) => {
  *             schema:
  *               type: object
  *               properties:
- *                 success:
- *                   type: boolean
- *                   example: true
- *                 message:
+ *                 id:
+ *                   type: integer
+ *                   example: 1
+ *                 idffa:
  *                   type: string
- *                   example: "Coach créé avec succès, e-mail de bienvenue envoyé."
+ *                   example: "123456"
+ *                 email:
+ *                   type: string
+ *                   example: "coach@example.com"
+ *                 access:
+ *                   type: string
+ *                   example: "AviFit"
  *       400:
- *         description: Mauvaise requête, vérifiez les données envoyées
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 errors:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       msg:
- *                         type: string
- *                       param:
- *                         type: string
+ *         description: Invalid data
  *       500:
- *         description: Erreur interne du serveur
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   example: "Échec de la création du coach"
+ *         description: Server error
  */
 router.post("/", validateCoach, CoachController.createCoach);
 
