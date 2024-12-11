@@ -60,6 +60,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/coaches", coachRoutes);
 app.use("/api/news", newsRoutes);
+app.use("/images", express.static(path.join(__dirname, "/img")));
 
 app.get("/set-password", (req, res) => {
   res.sendFile(path.join(__dirname, "views/set-password.html"));
